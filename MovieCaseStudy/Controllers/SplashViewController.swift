@@ -34,7 +34,7 @@ class SplashViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "splash"{
-                let destinationVC = segue.destination as! SearchViewController
+                let _ = segue.destination as! SearchViewController
             //destinationVC.textEmail = self.EmailTextField.text ?? "test"
         }
     }
