@@ -5,6 +5,7 @@
 //  Created by Tuba N. Yıldız on 10.10.2022.
 //
 
+import Firebase
 import UIKit
 import CoreData
 
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        _ = RCValues.sharedInstance
+        //Thread.sleep(forTimeInterval: 3.0)
         return true
     }
 
