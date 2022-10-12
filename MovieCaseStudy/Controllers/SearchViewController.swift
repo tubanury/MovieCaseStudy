@@ -8,12 +8,12 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var MovieTable: UITableView!
     
     let service = Service()
     var moviesSearchDataList: MoviesResult?
-    
+    var selectedIndex = 0
     
     
     override func viewDidLoad() {
@@ -39,15 +39,22 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMovie"{
+            let detailVc = segue.destination as! DetailViewController
+            detailVc.movieImdbId = moviesSearchDataList?.Search[selectedIndex].imdbID
+        }
+    }
     
-
+    
 }
 extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         moviesSearchDataList?.Search.count ?? 0
     }
     
-   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
         if let title = moviesSearchDataList?.Search[indexPath.row].Title {
@@ -61,12 +68,11 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        self.performSegue(withIdentifier: "toMovie", sender: self )
     }
-
-   
-}
     
+}
+
 
