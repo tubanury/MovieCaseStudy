@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class DetailViewController: UIViewController {
     
@@ -60,6 +61,11 @@ class DetailViewController: UIViewController {
         movieYear.text = self.movie?.Year
         movieGenre.text = self.movie?.Genre
         movieRuntime.text = self.movie?.Runtime
+        
+        Analytics.logEvent("MovieTitle", parameters: ["movieTitle" : self.movie?.Title as Any])
+        Analytics.logEvent("MovieYear", parameters: ["movieYear" : self.movie?.Year as Any])
+        Analytics.logEvent("MovieGenre", parameters: ["movieGenre" : self.movie?.Genre as Any])
+        Analytics.logEvent("MovieRuntime", parameters: ["movieRuntime" : self.movie?.Runtime as Any])
 
     }
   
