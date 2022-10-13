@@ -18,6 +18,8 @@
 		958E7E3428F681E900C59C32 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3328F681E900C59C32 /* DetailViewController.swift */; };
 		958E7E3628F75E3400C59C32 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3528F75E3400C59C32 /* Constants.swift */; };
 		958E7E3828F852D000C59C32 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3728F852D000C59C32 /* LoadingViewController.swift */; };
+		958E7E3A28F887FA00C59C32 /* Starjedi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 958E7E3928F887FA00C59C32 /* Starjedi.ttf */; };
+		958E7E3C28F8883300C59C32 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3B28F8883300C59C32 /* UIFont.swift */; };
 		95AC4CD028F4778F009C2063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CCF28F4778F009C2063 /* AppDelegate.swift */; };
 		95AC4CD228F4778F009C2063 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CD128F4778F009C2063 /* SceneDelegate.swift */; };
 		95AC4CD428F4778F009C2063 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CD328F4778F009C2063 /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 		958E7E3328F681E900C59C32 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		958E7E3528F75E3400C59C32 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		958E7E3728F852D000C59C32 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		958E7E3928F887FA00C59C32 /* Starjedi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starjedi.ttf; sourceTree = "<group>"; };
+		958E7E3B28F8883300C59C32 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		95AC4CCC28F4778F009C2063 /* MovieCaseStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieCaseStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AC4CCF28F4778F009C2063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95AC4CD128F4778F009C2063 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				95AC4CEA28F4783D009C2063 /* Resources */,
 				95AC4CE828F4780B009C2063 /* Controllers */,
 				95AC4CE728F47804009C2063 /* Views */,
+				958E7E3928F887FA00C59C32 /* Starjedi.ttf */,
 				95AC4CE028F47790009C2063 /* Info.plist */,
 				95AC4CEB28F47B9A009C2063 /* GoogleService-Info.plist */,
 				95AC4CD828F4778F009C2063 /* MovieCaseStudy.xcdatamodeld */,
@@ -162,6 +167,7 @@
 				95AC4CFF28F47EF9009C2063 /* RcValues.swift */,
 				958E7E2728F4A43300C59C32 /* Connectivity.swift */,
 				958E7E3528F75E3400C59C32 /* Constants.swift */,
+				958E7E3B28F8883300C59C32 /* UIFont.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 				95AC4CDF28F47790009C2063 /* LaunchScreen.storyboard in Resources */,
 				95AC4CDC28F47790009C2063 /* Assets.xcassets in Resources */,
 				95AC4CEC28F47B9A009C2063 /* GoogleService-Info.plist in Resources */,
+				958E7E3A28F887FA00C59C32 /* Starjedi.ttf in Resources */,
 				95AC4CD728F4778F009C2063 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +274,7 @@
 				95AC4CD028F4778F009C2063 /* AppDelegate.swift in Sources */,
 				958E7E3228F5E73700C59C32 /* Service.swift in Sources */,
 				958E7E2E28F53EED00C59C32 /* Movie.swift in Sources */,
+				958E7E3C28F8883300C59C32 /* UIFont.swift in Sources */,
 				958E7E3628F75E3400C59C32 /* Constants.swift in Sources */,
 				95AC4CD228F4778F009C2063 /* SceneDelegate.swift in Sources */,
 				958E7E3428F681E900C59C32 /* DetailViewController.swift in Sources */,
