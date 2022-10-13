@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct MoviesResult: Codable {
-    let Search: [MovieResult]
+    let Search: [MovieResult]?
 }
 
 struct MovieResult: Codable, Hashable {
@@ -36,16 +36,14 @@ class Service{
     public static let shared = Service()
     
     func searchMovie(with title: String, completion: @escaping(MoviesResult) -> ()){
-        //var movies = [MovieResult]()
         
-        guard let url  = URL(string: "http://www.omdbapi.com/?s=avengers&apikey=8c78aad9") else {return}
+        let urlString = Api.baseUrl + Api.parameterForSearch + title + Api.parameterForApikey + Api.apikey
+        guard let url  = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 if let data = data {
-                    
                     let result = try JSONDecoder().decode(MoviesResult.self, from: data)
-                    //print(result)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                         completion(result)
                     }
@@ -62,7 +60,9 @@ class Service{
     
     func fetchMovieDetails(with imdbId: String, completion: @escaping(MovieResult) -> ()){
         
-        guard let url = URL(string: "http://www.omdbapi.com/?i=tt0848228&apikey=8c78aad9") else {return}
+        let urlString = Api.baseUrl + Api.parameterForImdb + imdbId + Api.parameterForApikey + Api.apikey
+
+        guard let url = URL(string: urlString) else {return}
         
         
         URLSession.shared.dataTask(with: url) { data, response, error in

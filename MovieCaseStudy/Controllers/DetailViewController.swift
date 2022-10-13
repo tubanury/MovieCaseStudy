@@ -25,26 +25,41 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var movieRuntime: UILabel!
     
-    var movieImdbId: String?
-    let service = Service()
-    var movie: MovieResult?
+    @IBOutlet weak var seperator: UILabel!
+    @IBOutlet weak var seperator_2: UILabel!
     
+    var movieImdbId: String?
+    var movie: MovieResult?
+
+    let service = Service()
+    let loadingVC = LoadingViewController()
+
     override func viewDidLoad() {
+       
         super.viewDidLoad()
-        //test.text = movieImdbId
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        present(loadingVC, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
+       
         movieTitle.text = ""
         moviePlot.text = ""
         movieYear.text = ""
         movieGenre.text = ""
         movieRuntime.text = ""
-        getMovieDetails("test")
+        movieImdbRating.setTitle("", for: .normal)
+        movieImdbRating.isHidden = true
+        seperator.isHidden = true
+        seperator_2.isHighlighted = true
+        getMovieDetails(movieImdbId!)
         
     }
-    
+  
     func getMovieDetails(_ imdbId: String){
         service.fetchMovieDetails(with: imdbId) { movieSearchResult in
             self.movie = movieSearchResult
             self.configure()
+            self.loadingVC.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -59,8 +74,15 @@ class DetailViewController: UIViewController {
         movieTitle.text = self.movie?.Title
         moviePlot.text = self.movie?.Plot
         movieYear.text = self.movie?.Year
-        movieGenre.text = self.movie?.Genre
+        movieGenre.text = self.movie?.Genre?.components(separatedBy: ",")[0]
         movieRuntime.text = self.movie?.Runtime
+        
+        movieImdbRating.isHidden = false
+        movieImdbRating.setTitle(self.movie?.imdbRating, for: .normal)
+        
+        seperator.isHidden = false
+        seperator_2.isHighlighted = false
+        
         
         Analytics.logEvent("MovieTitle", parameters: ["movieTitle" : self.movie?.Title as Any])
         Analytics.logEvent("MovieYear", parameters: ["movieYear" : self.movie?.Year as Any])

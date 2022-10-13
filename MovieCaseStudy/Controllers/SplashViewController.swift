@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         SplashScreenLabel.text = RCValues.sharedInstance.launchScreenText(forKey: .appLaunchScreenText)
         
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
             if self.shouldPerformSegue(withIdentifier: "splash", sender: self){
                 self.performSegue(withIdentifier: "splash", sender: self )

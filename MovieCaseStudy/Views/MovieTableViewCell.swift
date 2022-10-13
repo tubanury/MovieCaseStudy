@@ -15,7 +15,6 @@ class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var MovieType: UILabel!
     @IBOutlet weak var MovieImage: UIImageView!
-    @IBOutlet weak var MovieReleaseYear: UIButton!
     
   
     override func awakeFromNib() {
@@ -38,7 +37,6 @@ class MovieTableViewCell: UITableViewCell {
         }
         
         MovieTitle.text = title
-        MovieReleaseYear.setTitle(year, for: .normal)
         MovieType.text = type
     }
 }
