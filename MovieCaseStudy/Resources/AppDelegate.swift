@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         _ = RCValues.sharedInstance
-        //Thread.sleep(forTimeInterval: 3.0)
+
         return true
     }
 

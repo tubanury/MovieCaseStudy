@@ -11,19 +11,19 @@ class SplashViewController: UIViewController {
 
     var connection = false
     @IBOutlet weak var SplashScreenLabel: UILabel!
-    
+    let errorVC = ErrorViewController()
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
         SplashScreenLabel.text = RCValues.sharedInstance.launchScreenText(forKey: .appLaunchScreenText)
         
-        //self.navigationController?.navigationBar.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            if self.shouldPerformSegue(withIdentifier: "splash", sender: self){
-                self.performSegue(withIdentifier: "splash", sender: self )
+            if self.shouldPerformSegue(withIdentifier: "toSearch", sender: self){
+                self.performSegue(withIdentifier: "toSearch", sender: self )
             }
             else{
-                self.presentLostConnectionAlert()
+                self.performSegue(withIdentifier: "toError", sender: self )
             }
         }
     }
@@ -33,10 +33,13 @@ class SplashViewController: UIViewController {
         return connection
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "splash"{
+        if segue.identifier == "toSearch"{
                 let _ = segue.destination as! SearchViewController
-            //destinationVC.textEmail = self.EmailTextField.text ?? "test"
         }
+        else if segue.identifier == "toError"{
+                let _ = segue.destination as! ErrorViewController
+        }
+
     }
     
     func presentLostConnectionAlert(){

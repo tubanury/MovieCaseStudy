@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
     
    
     let loadingVC = LoadingViewController()
+    private var startSearchView = StartSearchView()
+
     let service = Service()
     var moviesSearchDataList: MoviesResult?
     var selectedIndex = 0
@@ -24,7 +26,7 @@ class SearchViewController: UIViewController {
         MovieTable.delegate = self
         MovieTable.dataSource = self
         searchBar.delegate = self
-        
+        addStartSearchView()
         self.navigationController?.navigationBar.isHidden = true
         loadingVC.modalPresentationStyle = .overCurrentContext
         loadingVC.modalTransitionStyle = .crossDissolve
@@ -33,7 +35,17 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
 
     }
-    
+    private func addStartSearchView(){
+        startSearchView.translatesAutoresizingMaskIntoConstraints =  false
+        view.addSubview(startSearchView)
+        
+        NSLayoutConstraint.activate([
+            startSearchView.topAnchor.constraint(equalTo: view.topAnchor, constant:100),
+            startSearchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            startSearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            startSearchView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     func getMovies(_ title: String) {
         
         present(loadingVC, animated: true)
@@ -51,6 +63,7 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMovie"{
             let detailVc = segue.destination as! DetailViewController
@@ -61,14 +74,24 @@ class SearchViewController: UIViewController {
     
 }
 
+
+
+
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {return}
         getMovies(searchText)
     }
-    
+  
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        startSearchView.removeFromSuperview()
+
+    }
 }
+
+
+
 extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -16,7 +16,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var MovieType: UILabel!
     @IBOutlet weak var MovieImage: UIImageView!
     
-  
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

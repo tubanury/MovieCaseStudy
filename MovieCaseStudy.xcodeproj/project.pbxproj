@@ -20,6 +20,8 @@
 		958E7E3828F852D000C59C32 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3728F852D000C59C32 /* LoadingViewController.swift */; };
 		958E7E3A28F887FA00C59C32 /* Starjedi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 958E7E3928F887FA00C59C32 /* Starjedi.ttf */; };
 		958E7E3C28F8883300C59C32 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3B28F8883300C59C32 /* UIFont.swift */; };
+		958E7E3E28F889F000C59C32 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3D28F889EF00C59C32 /* ErrorViewController.swift */; };
+		958E7E4028F89F5E00C59C32 /* StartSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E7E3F28F89F5E00C59C32 /* StartSearchView.swift */; };
 		95AC4CD028F4778F009C2063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CCF28F4778F009C2063 /* AppDelegate.swift */; };
 		95AC4CD228F4778F009C2063 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CD128F4778F009C2063 /* SceneDelegate.swift */; };
 		95AC4CD428F4778F009C2063 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC4CD328F4778F009C2063 /* ViewController.swift */; };
@@ -52,6 +54,8 @@
 		958E7E3728F852D000C59C32 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		958E7E3928F887FA00C59C32 /* Starjedi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starjedi.ttf; sourceTree = "<group>"; };
 		958E7E3B28F8883300C59C32 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		958E7E3D28F889EF00C59C32 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		958E7E3F28F89F5E00C59C32 /* StartSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSearchView.swift; sourceTree = "<group>"; };
 		95AC4CCC28F4778F009C2063 /* MovieCaseStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieCaseStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AC4CCF28F4778F009C2063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95AC4CD128F4778F009C2063 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		95AC4CE728F47804009C2063 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				958E7E3F28F89F5E00C59C32 /* StartSearchView.swift */,
 				958E7E2928F4B81700C59C32 /* MovieTableViewCell.swift */,
 				95AC4CD528F4778F009C2063 /* Main.storyboard */,
 				95AC4CDD28F47790009C2063 /* LaunchScreen.storyboard */,
@@ -148,6 +153,7 @@
 				952E277628F4925D00E363C5 /* SearchViewController.swift */,
 				958E7E3328F681E900C59C32 /* DetailViewController.swift */,
 				958E7E3728F852D000C59C32 /* LoadingViewController.swift */,
+				958E7E3D28F889EF00C59C32 /* ErrorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 				95AC4CDA28F4778F009C2063 /* MovieCaseStudy.xcdatamodeld in Sources */,
 				952E277728F4925D00E363C5 /* SearchViewController.swift in Sources */,
 				958E7E3828F852D000C59C32 /* LoadingViewController.swift in Sources */,
+				958E7E4028F89F5E00C59C32 /* StartSearchView.swift in Sources */,
 				958E7E2A28F4B81700C59C32 /* MovieTableViewCell.swift in Sources */,
 				95AC4CD428F4778F009C2063 /* ViewController.swift in Sources */,
 				95AC4D0028F47EF9009C2063 /* RcValues.swift in Sources */,
@@ -277,6 +284,7 @@
 				958E7E3C28F8883300C59C32 /* UIFont.swift in Sources */,
 				958E7E3628F75E3400C59C32 /* Constants.swift in Sources */,
 				95AC4CD228F4778F009C2063 /* SceneDelegate.swift in Sources */,
+				958E7E3E28F889F000C59C32 /* ErrorViewController.swift in Sources */,
 				958E7E3428F681E900C59C32 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
