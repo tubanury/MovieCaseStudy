@@ -28,14 +28,12 @@ class SearchViewController: UIViewController {
         movieCollection.dataSource = self
         searchBar.delegate = self
         addStartSearchView()
-        self.navigationController?.navigationBar.isHidden = true
+
         loadingVC.modalPresentationStyle = .overCurrentContext
         loadingVC.modalTransitionStyle = .crossDissolve
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
 
     }
+   
     private func addStartSearchView(){
         startSearchView.translatesAutoresizingMaskIntoConstraints =  false
         view.addSubview(startSearchView)

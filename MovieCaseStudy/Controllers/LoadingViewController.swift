@@ -12,7 +12,7 @@ class LoadingViewController: UIViewController {
     var loadingActivityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .large
-        indicator.color = .systemPink
+        indicator.color = .systemTeal
         
         indicator.startAnimating()
         indicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]

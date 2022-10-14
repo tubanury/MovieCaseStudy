@@ -28,38 +28,32 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var seperator: UILabel!
     @IBOutlet weak var seperator_2: UILabel!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     var movieImdbId: String?
     var movie: MovieResult?
 
     let service = Service()
-    let loadingVC = LoadingViewController()
 
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        present(loadingVC, animated: true)
-        self.navigationController?.navigationBar.isHidden = false
        
-        movieTitle.text = ""
-        moviePlot.text = ""
-        movieYear.text = ""
-        movieGenre.text = ""
-        movieRuntime.text = ""
-        movieImdbRating.setTitle("", for: .normal)
-        movieImdbRating.isHidden = true
-        seperator.isHidden = true
-        seperator_2.isHighlighted = true
+       
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+        }
+        
         getMovieDetails(movieImdbId!)
         
     }
   
     func getMovieDetails(_ imdbId: String){
+
         service.fetchMovieDetails(with: imdbId) { movieSearchResult in
             self.movie = movieSearchResult
             self.configure()
-            self.loadingVC.dismiss(animated: true, completion: nil)
+            
         }
         
     }
@@ -81,7 +75,7 @@ class DetailViewController: UIViewController {
         movieImdbRating.setTitle(self.movie?.imdbRating, for: .normal)
         
         seperator.isHidden = false
-        seperator_2.isHighlighted = false
+        seperator_2.isHidden = false
         
         
         Analytics.logEvent("MovieTitle", parameters: ["movieTitle" : self.movie?.Title as Any])
