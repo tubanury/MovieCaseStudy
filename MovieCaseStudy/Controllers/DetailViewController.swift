@@ -30,41 +30,42 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+
     var movieImdbId: String?
     var movie: MovieResult?
 
     let service = Service()
 
+    
+    
     override func viewDidLoad() {
        
         super.viewDidLoad()
        
-       
         DispatchQueue.main.async {
             self.spinner.startAnimating()
         }
-        
         getMovieDetails(movieImdbId!)
         
     }
   
     func getMovieDetails(_ imdbId: String){
-
         service.fetchMovieDetails(with: imdbId) { movieSearchResult in
             self.movie = movieSearchResult
             self.configure()
             
         }
-        
     }
     
     func configure(){
-        
+
         Service.shared.fetchImage(withUrlString: self.movie?.Poster ?? "") { icon in
             DispatchQueue.main.async {
                 self.moviePoster.image = icon
             }
         }
+        spinner.isHidden = true
+
         movieTitle.text = self.movie?.Title
         moviePlot.text = self.movie?.Plot
         movieYear.text = self.movie?.Year

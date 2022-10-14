@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
 
 
@@ -20,6 +20,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         _ = RCValues.sharedInstance
 
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+          )
+        } else {
+          let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
+        
+        let notificationOption = launchOptions?[.remoteNotification]
+
+        if
+          let notification = notificationOption as? [String: AnyObject],
+          let aps = notification["aps"] as? [String: AnyObject] {
+            //Change the selected tab of the tab controller to the Movie Detail section.
+            //(window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+        }
         return true
     }
 

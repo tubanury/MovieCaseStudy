@@ -18,8 +18,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var MovieYear: UILabel!
     
-    
-    
+
     
     func set(icon: String?, title: String?, year: String?, type: String?){
         
@@ -30,7 +29,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         }
         
         MovieTitle.text = title
-        MovieType.text = type
+        MovieType.text = type?.capitalizingFirstLetter()
         MovieYear.text = year
     }
     

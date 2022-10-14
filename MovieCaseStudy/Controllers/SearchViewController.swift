@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var movieCollection: UICollectionView!
     
     let loadingVC = LoadingViewController()
-    private var startSearchView = StartSearchView()
+    private var beforeSearchImage = BeforeSearchImageView()
 
     let service = Service()
     var moviesSearchDataList: MoviesResult?
@@ -27,24 +27,25 @@ class SearchViewController: UIViewController {
         movieCollection.delegate = self
         movieCollection.dataSource = self
         searchBar.delegate = self
-        addStartSearchView()
+        addBeforeSearchImageToview()
 
         loadingVC.modalPresentationStyle = .overCurrentContext
         loadingVC.modalTransitionStyle = .crossDissolve
 
     }
    
-    private func addStartSearchView(){
-        startSearchView.translatesAutoresizingMaskIntoConstraints =  false
-        view.addSubview(startSearchView)
+    private func addBeforeSearchImageToview(){
+        beforeSearchImage.translatesAutoresizingMaskIntoConstraints =  false
+        view.addSubview(beforeSearchImage)
         
         NSLayoutConstraint.activate([
-            startSearchView.topAnchor.constraint(equalTo: view.topAnchor, constant:100),
-            startSearchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            startSearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            startSearchView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            beforeSearchImage.topAnchor.constraint(equalTo: view.topAnchor, constant:100),
+            beforeSearchImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            beforeSearchImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            beforeSearchImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
     func getMovies(_ title: String) {
         
         present(loadingVC, animated: true)
@@ -55,10 +56,7 @@ class SearchViewController: UIViewController {
             if self.moviesSearchDataList?.Search?.count ?? 0 > 0 {
                 self.movieCollection.reloadData()
             } else {
-                let alert = UIAlertController(title: "Error", message: "The movie you searched is not found!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
+                self.presentAlert()
             }
         }
     }
@@ -69,12 +67,13 @@ class SearchViewController: UIViewController {
             detailVc.movieImdbId = moviesSearchDataList?.Search?[selectedIndex].imdbID
         }
     }
-    
+    func presentAlert(){
+        let alert = UIAlertController(title: "Error", message: "The movie you searched is not found!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
-
-
-
 
 extension SearchViewController: UISearchBarDelegate {
     
@@ -84,7 +83,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
   
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        startSearchView.removeFromSuperview()
+        beforeSearchImage.removeFromSuperview()
 
     }
 }
@@ -116,6 +115,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        print(selectedIndex)
+        print(indexPath.row)
+        print(indexPath)
         self.performSegue(withIdentifier: "toMovie", sender: self )
     }
    

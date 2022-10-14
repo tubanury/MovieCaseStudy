@@ -12,4 +12,4 @@ struct Connectivity {
         let connected = self.sharedInstance.isReachable
         return connected
     }
-}//end Connectivity
+}

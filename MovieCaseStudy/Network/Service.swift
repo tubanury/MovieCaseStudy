@@ -10,26 +10,6 @@ import UIKit
 import SwiftUI
 
 
-struct MoviesResult: Codable {
-    let Search: [MovieResult]?
-}
-
-struct MovieResult: Codable, Hashable {
-    
-    let Title: String
-    let Year: String
-    let Poster: String
-    let `Type`: String
-    let imdbID: String
-    let Runtime: String?
-    let Director: String?
-    let Released: String?
-    let Plot: String?
-    let imdbRating: String?
-    let Genre: String?
-}
-
-
 
 class Service{
     
@@ -37,8 +17,8 @@ class Service{
     
     func searchMovie(with title: String, completion: @escaping(MoviesResult) -> ()){
         
-        let urlString = Api.baseUrl + Api.parameterForSearch + title + Api.parameterForApikey + Api.apikey
-        guard let url  = URL(string: urlString) else {return}
+        let urlString = Api.baseUrl + Api.parameterForSearch + title.replacingOccurrences(of: " ", with: "+") + Api.parameterForApikey + Api.apikey
+        guard let url  = URL(string: urlString)?.absoluteURL else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {

@@ -9,13 +9,10 @@ import UIKit
 
 class ErrorViewController: UIViewController {
 
-    @IBOutlet weak var tryAgainButton: UIButton!
     var connection = false
-    let vc = SearchViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -23,11 +20,4 @@ class ErrorViewController: UIViewController {
         return connection
     }
     
-    @IBAction func didTapTryAgain(_ sender: Any) {
-        connection = Connectivity.isConnectedToInternet
-        if(connection){
-            //self.present(vc, animated: true, completion: nil)
-        }
-        
-    }
 }

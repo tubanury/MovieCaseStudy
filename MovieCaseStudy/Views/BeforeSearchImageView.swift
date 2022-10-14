@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartSearchView: UIView {
+class BeforeSearchImageView: UIView {
     
     private lazy var containerView: UIView = {
        let temp = UIView()
@@ -15,37 +15,13 @@ class StartSearchView: UIView {
         temp.clipsToBounds = true
         temp.backgroundColor = .white
         return temp
-    }() //boş container, padding vs verirken yönetim kolaylığı sağlar
-    
-    private lazy var mainStackView: UIStackView = {
-    
-        let temp = UIStackView(arrangedSubviews: [searchImage, searchLabel])
-        searchImage.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        searchImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.alignment = .center
-        temp.distribution = .fill
-        temp.axis = .vertical
-        temp.spacing = 0
-        return temp
-        
-        
     }()
- 
+    
     private lazy var searchImage: UIImageView = {
         let temp = UIImageView()
         temp.translatesAutoresizingMaskIntoConstraints =  false
         temp.contentMode = .scaleAspectFit
         temp.image = UIImage(named: "startSearch")
-        
-        return temp
-        
-    }()
-    
-    private lazy var searchLabel: UILabel = {
-        let temp =  UILabel()
-        temp.text = "Waiting to search!"
-        temp.translatesAutoresizingMaskIntoConstraints = false
         return temp
         
     }()

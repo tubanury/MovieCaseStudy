@@ -46,10 +46,7 @@ class RCValues {
     RemoteConfig.remoteConfig().fetch { [weak self] _, error in
         if let error = error {
           print("Uh-oh. Got an error fetching remote values \(error)")
-          // In a real app, you would probably want to call the loading
-          // done callback anyway, and just proceed with the default values.
-          // I won't do that here, so we can call attention
-          // to the fact that Remote Config isn't loading.
+         
           return
         }
 

@@ -67,7 +67,7 @@
                     <navigationItem key="navigationItem" id="GfH-HU-t1D"/>
                     <connections>
                         <outlet property="SplashScreenLabel" destination="eZr-uK-Dc9" id="RXQ-gS-IgE"/>
-                        <segue destination="BOa-4J-d0P" kind="presentation" identifier="toError" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="2lJ-ZF-pke"/>
+                        <segue destination="BOa-4J-d0P" kind="presentation" identifier="toError" modalPresentationStyle="fullScreen" id="2lJ-ZF-pke"/>
                         <segue destination="Kk5-Kf-4xs" kind="presentation" identifier="toSearch" modalPresentationStyle="fullScreen" id="2Nl-gI-yA5"/>
                     </connections>
                 </viewController>
@@ -119,7 +119,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="didTapTryAgain:" destination="BOa-4J-d0P" eventType="touchUpInside" id="o8Y-wX-fbd"/>
+                                            <segue destination="Kk5-Kf-4xs" kind="presentation" identifier="errorToSearch" modalPresentationStyle="fullScreen" id="IXa-pD-vo5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -140,13 +140,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hBX-fl-eQl"/>
-                    <connections>
-                        <outlet property="tryAgainButton" destination="W47-0y-NRE" id="vU3-BQ-0jd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQs-Tu-Tq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="274" y="-167"/>
+            <point key="canvasLocation" x="273.91304347826087" y="-167.41071428571428"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Qzf-r3-eRn">
@@ -249,7 +246,6 @@
                                             <outlet property="MovieTitle" destination="j05-55-wD9" id="rMf-GC-NEE"/>
                                             <outlet property="MovieType" destination="pti-yf-wV1" id="0NW-vw-oEG"/>
                                             <outlet property="MovieYear" destination="a2e-W3-eeb" id="qqM-k9-gMv"/>
-                                            <segue destination="cNR-Oz-2hM" kind="presentation" identifier="toMovie" modalPresentationStyle="automatic" id="7Dk-Aj-aSO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -271,6 +267,7 @@
                     <connections>
                         <outlet property="movieCollection" destination="lzp-nm-vq5" id="iAG-Zd-clX"/>
                         <outlet property="searchBar" destination="4AZ-Cm-i97" id="6hV-Ns-6iR"/>
+                        <segue destination="cNR-Oz-2hM" kind="presentation" identifier="toMovie" modalPresentationStyle="automatic" id="yOb-gG-uG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYu-Kp-661" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -406,6 +403,9 @@
             <point key="canvasLocation" x="1506" y="84"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IXa-pD-vo5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="UIImage()" width="128" height="128"/>
         <image name="clip-no-connection" width="256" height="256"/>
