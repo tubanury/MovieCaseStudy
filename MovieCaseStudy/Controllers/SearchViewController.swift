@@ -2,17 +2,18 @@
 //  SearchViewController.swift
 //  MovieCaseStudy
 //
-//  Created by Tuba N. Yıldız on 10.10.2022.
+//  Created by Tuba N. Yıldız on 13.10.2022.
 //
 
 import UIKit
 
 class SearchViewController: UIViewController {
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var MovieTable: UITableView!
-    
+
    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var movieCollection: UICollectionView!
+    
     let loadingVC = LoadingViewController()
     private var startSearchView = StartSearchView()
 
@@ -20,11 +21,11 @@ class SearchViewController: UIViewController {
     var moviesSearchDataList: MoviesResult?
     var selectedIndex = 0
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        MovieTable.delegate = self
-        MovieTable.dataSource = self
+        movieCollection.delegate = self
+        movieCollection.dataSource = self
         searchBar.delegate = self
         addStartSearchView()
         self.navigationController?.navigationBar.isHidden = true
@@ -54,7 +55,7 @@ class SearchViewController: UIViewController {
             self.loadingVC.dismiss(animated: true, completion: nil)
 
             if self.moviesSearchDataList?.Search?.count ?? 0 > 0 {
-                self.MovieTable.reloadData()
+                self.movieCollection.reloadData()
             } else {
                 let alert = UIAlertController(title: "Error", message: "The movie you searched is not found!", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
@@ -92,15 +93,17 @@ extension SearchViewController: UISearchBarDelegate {
 
 
 
-extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+   
+   
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         moviesSearchDataList?.Search?.count ?? 0
+
     }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         if let title = moviesSearchDataList?.Search?[indexPath.row].Title {
             cell.MovieTitle!.text = title
         }
@@ -112,15 +115,10 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
-   
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.performSegue(withIdentifier: "toMovie", sender: self )
     }
-    
+   
 }
-
-
